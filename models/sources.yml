@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: adb_p2_grocery_serverless
+    schema: bronze
+    tables:
+      - name: train
+      - name: test
+      - name: stores
+      - name: transactions
+      - name: oil
+      - name: holidays_events
