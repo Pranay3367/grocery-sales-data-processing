@@ -41,15 +41,18 @@ The project follows a layered data architecture:
 
 ## 🛠️ Technology Stack
 
-| Technology         | Purpose                                |
-| ------------------ | -------------------------------------- |
-| **dbt**            | Data transformation and modeling       |
-| **SQL**            | Data transformation logic              |
-| **Databricks SQL** | Data processing and analytical storage |
-| **Delta Lake**     | Storage layer for transformed datasets |
-| **Git / GitHub**   | Version control and project management |
-
----
+| Technology | Purpose |
+|---|---|
+| **Azure Data Factory** | Pipeline orchestration and scheduling |
+| **Azure Data Lake Storage Gen2** | Cloud-based data storage |
+| **Azure Databricks** | Data processing and transformation |
+| **PySpark** | Distributed data processing |
+| **Delta Lake** | Reliable storage and ACID transactions |
+| **dbt** | Data transformation, modeling, and testing |
+| **SQL** | Data querying and transformation |
+| **Apache Airflow** | Workflow orchestration |
+| **Unity Catalog** | Data governance and data access management |
+| **Git / GitHub** | Version control and collaboration |
 
 ## 📂 Dataset
 
