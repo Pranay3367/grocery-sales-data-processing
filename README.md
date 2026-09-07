@@ -220,8 +220,34 @@ Provides date-related attributes for analytical queries.
 
 The Gold layer follows a **Star Schema** design:
 
-![Grocery Sales Star Schema](design/Data-Model.png.jpeg)
+![Grocery Sales Star Schema](design/Data-Model.png)
 
+```text
+                    ┌──────────────┐
+                    │   dim_date   │
+                    └──────┬───────┘
+                           │
+                           │
+┌──────────────┐    ┌──────▼───────┐    ┌───────────────┐
+│ dim_product  │────│  fact_sales  │────│   dim_store   │
+└──────────────┘    └──────────────┘    └───────────────┘
+```
+
+### Fact Table
+
+**fact_sales**
+
+Contains measurable sales information and references the relevant dimensions.
+
+### Dimension Tables
+
+* **dim_date**
+* **dim_product**
+* **dim_store**
+
+This structure makes the data easier to query and supports analytical workloads.
+
+---
 
 # 🔄 dbt Transformation Flow
 
@@ -265,12 +291,34 @@ and materializes these models as tables.
 
 ---
 
+# 📊 Dashboards
+
+The Gold-layer analytics models are used to support grocery sales reporting and
+business analysis. The repository includes the dashboard output under the
+`Dashboards/` directory.
+
+### Grocery Sales Dashboard
+
+![Grocery Sales Dashboard](Dashboards/Dashboard.png.png)
+
+The dashboard provides a visual view of the curated grocery sales data and
+supports analysis of sales performance and business trends.
+
+> **Note:** The image path above matches the current filename in the GitHub
+> repository: `Dashboards/Dashboard.png.png`.
+
+---
+
 # 🧩 Project Structure
 
 ```text
 grocery-sales-data-processing/
 │
-├── analyses/
+├── Airflow/
+│   └── dags/
+│
+├── Dashboards/
+│   └── Dashboard.png.png
 │
 ├── datasets/
 │   └── raw/
@@ -283,49 +331,40 @@ grocery-sales-data-processing/
 │       └── transactions.txt
 │
 ├── design/
-│   ├── Data-Model.png
+│   ├── Data-Model.png.jpeg
 │   ├── High-level-Structure.png
-│   └── Low-Level.png
+│   └── Low_Level_Data_model.png.png
 │
-├── macros/
-│   └── generate_schema_name.sql
+├── development/
+│   ├── silver/
+│   │   ├── staging/
+│   │   └── intermediate/
+│   └── gold/
+│       ├── dim_date.sql
+│       ├── dim_product.sql
+│       ├── dim_store.sql
+│       └── fact_sales.sql
 │
 ├── models/
 │   ├── staging/
-│   │   ├── stg_holidays_events.sql
-│   │   ├── stg_oil.sql
-│   │   ├── stg_stores.sql
-│   │   ├── stg_test.sql
-│   │   ├── stg_train.sql
-│   │   └── stg_transactions.sql
-│   │
 │   ├── intermediate/
-│   │   ├── int_sales.sql
-│   │   ├── int_sales_complete.sql
-│   │   ├── int_sales_enriched.sql
-│   │   ├── int_sales_oil.sql
-│   │   └── int_train_sales.sql
-│   │
 │   ├── marts/
-│   │   ├── dim_date.sql
-│   │   ├── dim_product.sql
-│   │   ├── dim_store.sql
-│   │   └── fact_sales.sql
-│   │
 │   └── sources.yml
 │
+├── macros/
+├── analyses/
 ├── seeds/
 ├── snapshots/
 ├── tests/
 │
+├── .gitattributes
 ├── .gitignore
 ├── dbt_project.yml
 └── README.md
 ```
 
-The repository structure currently contains dedicated directories for analyses, raw datasets, design diagrams, macros, models, seeds, snapshots, and tests.
-
----
+The repository separates raw datasets, design assets, development-layer
+transformations, dbt models, Airflow orchestration, dashboards, and tests.
 
 # 🧪 Data Quality & Testing
 
@@ -455,6 +494,7 @@ The schema configuration is defined directly in `dbt_project.yml`.
 * Created reusable fact and dimension models.
 * Separated raw data from business-ready datasets.
 * Established a maintainable project structure for future analytical workloads.
+* Added dashboard visualization for curated grocery sales analytics.
 
 ---
 
@@ -465,11 +505,10 @@ Possible future enhancements include:
 * Add comprehensive dbt schema tests.
 * Add dbt documentation and column descriptions.
 * Implement incremental models for large datasets.
-* Add automated pipeline orchestration using Apache Airflow.
-* Add CI/CD for dbt deployments.
-* Add data quality monitoring.
-* Build Power BI or Databricks dashboards.
+* Add CI/CD for dbt and pipeline deployments.
+* Expand automated data quality monitoring.
 * Add automated data freshness checks.
+* Improve model-level lineage and observability.
 * Implement model-level lineage and observability.
 * Add more advanced sales forecasting and analytical models.
 
