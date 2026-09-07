@@ -220,34 +220,7 @@ Provides date-related attributes for analytical queries.
 
 The Gold layer follows a **Star Schema** design:
 
-![Grocery Sales Star Schema](design/Data-Model.png)
-
-```text
-                    ┌──────────────┐
-                    │   dim_date   │
-                    └──────┬───────┘
-                           │
-                           │
-┌──────────────┐    ┌──────▼───────┐    ┌───────────────┐
-│ dim_product  │────│  fact_sales  │────│   dim_store   │
-└──────────────┘    └──────────────┘    └───────────────┘
-```
-
-### Fact Table
-
-**fact_sales**
-
-Contains measurable sales information and references the relevant dimensions.
-
-### Dimension Tables
-
-* **dim_date**
-* **dim_product**
-* **dim_store**
-
-This structure makes the data easier to query and supports analytical workloads.
-
----
+![Grocery Sales Star Schema](design/Data-Model.png.jpeg)
 
 # 🔄 dbt Transformation Flow
 
