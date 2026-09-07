@@ -37,7 +37,6 @@ The project follows a layered data architecture:
 
 
 ![Grocery Sales Data Model Pipeline](design/High-level-Structure.png)
-```text
 
 ## 🛠️ Technology Stack
 
@@ -420,7 +419,7 @@ The Gold-layer models can support analytical use cases such as:
 Clone the repository:
 
 ```bash
-git clone https://github.com/Prabu-Kanth/grocery-sales-data-processing.git
+git clone https://github.com/Pranay3367/grocery-sales-data-processing.git
 
 cd grocery-sales-data-processing
 ```
