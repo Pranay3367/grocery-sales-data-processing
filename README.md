@@ -277,9 +277,6 @@ business analysis. The repository includes the dashboard output under the
 The dashboard provides a visual view of the curated grocery sales data and
 supports analysis of sales performance and business trends.
 
-> **Note:** The image path above matches the current filename in the GitHub
-> repository: `Dashboards/Dashboard.png.png`.
-
 ---
 
 # 🧩 Project Structure
